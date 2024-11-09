@@ -67,3 +67,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 # payroll-system
 # payroll-app
 # payroll-app
+
+![image_Alt](https://github.com/Eodera1/payroll-app/blob/65c1ad0af64e6ea6a9d70d567ee9480b40b11929/Scaffolded.payroll_db.JPG)
