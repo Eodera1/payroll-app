@@ -5,9 +5,9 @@
 </div>
 
 <!-- Allowance Type Field -->
-<div class="form-group col-sm-12 col-lg-12">
+<div class="form-group col-sm-6">
     {!! Form::label('allowance_type', 'Allowance Type:') !!}
-    {!! Form::textarea('allowance_type', null, ['class' => 'form-control', 'maxlength' => 65535, 'maxlength' => 65535]) !!}
+    {!! Form::text('allowance_type', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
 </div>
 
 <!-- Amount Field -->

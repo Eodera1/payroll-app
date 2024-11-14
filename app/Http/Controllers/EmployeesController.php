@@ -6,6 +6,8 @@ use App\DataTables\EmployeesDataTable;
 use App\Http\Requests\CreateEmployeesRequest;
 use App\Http\Requests\UpdateEmployeesRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Department;
+use App\Models\Employees;
 use App\Repositories\EmployeesRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -34,7 +36,9 @@ class EmployeesController extends AppBaseController
      */
     public function create()
     {
-        return view('employees.create');
+        
+        $departments = Department::pluck('department_name', 'id');
+        return view('employees.create', compact('departments'));
     }
 
     /**
@@ -72,15 +76,19 @@ class EmployeesController extends AppBaseController
      */
     public function edit($id)
     {
-        $employees = $this->employeesRepository->find($id);
-
-        if (empty($employees)) {
-            Flash::error('Employees not found');
-
+        $employee = $this->employeeRepository->find($id);
+    
+        if (empty($employee)) {
+            Flash::error('Employee not found');
             return redirect(route('employees.index'));
         }
+    
+        // Fetch employeess as an associative array with id as the key and name as the value
+        $departments = Department::pluck('department_name', 'id');
 
-        return view('employees.edit')->with('employees', $employees);
+    
+
+        return view('employees.edit', compact('employee', 'departments'));
     }
 
     /**

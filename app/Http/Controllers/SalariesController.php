@@ -6,6 +6,7 @@ use App\DataTables\SalariesDataTable;
 use App\Http\Requests\CreateSalariesRequest;
 use App\Http\Requests\UpdateSalariesRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Employees;
 use App\Repositories\SalariesRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -34,7 +35,8 @@ class SalariesController extends AppBaseController
      */
     public function create()
     {
-        return view('salaries.create');
+        $employees = Employees::pluck('first_name', 'id');
+        return view('salaries.create', compact('employees'));
     }
 
     /**
@@ -79,8 +81,9 @@ class SalariesController extends AppBaseController
 
             return redirect(route('salaries.index'));
         }
+        $employees = Employees::pluck('first_name', 'id');
 
-        return view('salaries.edit')->with('salaries', $salaries);
+        return view('salaries.edit', compact('salaries', 'employees'));
     }
 
     /**

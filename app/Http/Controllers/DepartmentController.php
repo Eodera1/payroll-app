@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDepartmentRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\DepartmentRepository;
 use Illuminate\Http\Request;
+use App\Models\Employees as ModelsEmployees;
 use Flash;
 
 class DepartmentController extends AppBaseController
@@ -34,7 +35,8 @@ class DepartmentController extends AppBaseController
      */
     public function create()
     {
-        return view('departments.create');
+        $employees = ModelsEmployees::pluck('first_name', 'id');
+        return view('departments.create', compact('employees'));
     }
 
     /**

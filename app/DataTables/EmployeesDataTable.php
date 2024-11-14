@@ -18,7 +18,13 @@ class EmployeesDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'employees.datatables_actions');
+        
+        $dataTable->addColumn('department', function (Employees $employees) {
+            return $employee->department->department_name ?? 'N/A'; // Display department name or 'N/A' if not available
+
+        });
+        return $dataTable;
+        
     }
 
     /**
@@ -29,7 +35,7 @@ class EmployeesDataTable extends DataTable
      */
     public function query(Employees $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with(['department']);
     }
 
     /**

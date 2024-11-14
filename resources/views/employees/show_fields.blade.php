@@ -28,10 +28,10 @@
     <p>{{ $employees->physical_address }}</p>
 </div>
 
-<!-- Department Field -->
+<<!-- Department Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('department', 'Department:') !!}
-    <p>{{ $employees->department }}</p>
+    {!! Form::label('department_id', 'Department:') !!}
+    <p>{{ $employee->department->name }}</p>
 </div>
 
 <!-- Hire Date Field -->

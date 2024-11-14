@@ -6,7 +6,7 @@
 
 <!-- Manager Id Field -->
 <div class="col-sm-12">
-    {!! Form::label('manager_id', 'Manager Id:') !!}
+    {!! Form::label('manager_id', 'Manager:') !!}
     <p>{{ $department->manager_id }}</p>
 </div>
 

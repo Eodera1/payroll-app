@@ -1,7 +1,7 @@
 [
     {
-        "name": "# id",
-        "dbType": "integer,false",
+        "name": "id",
+        "dbType": "integer,true",
         "htmlType": "number",
         "validations": "",
         "searchable": false,
@@ -25,8 +25,8 @@
     },
     {
         "name": "check_in_time",
-        "dbType": "datetime",
-        "htmlType": "date",
+        "dbType": "time",
+        "htmlType": "text",
         "validations": "nullable|nullable",
         "searchable": true,
         "fillable": true,
@@ -37,8 +37,8 @@
     },
     {
         "name": "check_out_time",
-        "dbType": "datetime",
-        "htmlType": "date",
+        "dbType": "time",
+        "htmlType": "text",
         "validations": "nullable|nullable",
         "searchable": true,
         "fillable": true,
@@ -58,6 +58,30 @@
         "inForm": true,
         "inIndex": true,
         "inView": true
+    },
+    {
+        "name": "updated_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "created_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
     },
     {
         "type": "relation",

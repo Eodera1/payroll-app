@@ -16,8 +16,6 @@ class Attendance extends Model
     ];
 
     protected $casts = [
-        'check_in_time' => 'datetime',
-        'check_out_time' => 'datetime',
         'date' => 'date'
     ];
 
@@ -25,7 +23,9 @@ class Attendance extends Model
         'empolyee_id' => 'nullable',
         'check_in_time' => 'nullable',
         'check_out_time' => 'nullable',
-        'date' => 'nullable'
+        'date' => 'nullable',
+        // 'updated_at' => 'required',
+        // 'created_at' => 'required'
     ];
 
     public function empolyee(): \Illuminate\Database\Eloquent\Relations\BelongsTo

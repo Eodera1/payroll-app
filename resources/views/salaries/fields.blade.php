@@ -1,7 +1,7 @@
 <!-- Employee Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('employee_id', 'Employee Id:') !!}
-    {!! Form::number('employee_id', null, ['class' => 'form-control']) !!}
+    {!! Form::select('employee_id', $employees, null, ['class' => 'form-control','placeholder' => 'Select Employee']) !!}
 </div>
 
 <!-- Basic Salary Field -->
@@ -31,7 +31,7 @@
 <!-- Pay Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('pay_date', 'Pay Date:') !!}
-    {!! Form::text('pay_date', null, ['class' => 'form-control','id'=>'pay_date']) !!}
+    {!! Form::date('pay_date', null, ['class' => 'form-control','id'=>'pay_date']) !!}
 </div>
 
 @push('page_scripts')

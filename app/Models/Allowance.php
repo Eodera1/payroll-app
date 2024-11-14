@@ -25,10 +25,12 @@ class Allowance extends Model
 
     public static array $rules = [
         'employee_id' => 'nullable',
-        'allowance_type' => 'nullable|string|max:65535',
+        'allowance_type' => 'nullable|string|max:100',
         'amount' => 'nullable|numeric',
         'date_granted' => 'nullable',
-        'allowance_privilage' => 'nullable|string|max:100'
+        'allowance_privilage' => 'nullable|string|max:100',
+        // 'updated_at' => 'required',
+        // 'created_at' => 'required'
     ];
 
     public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -6,6 +6,8 @@
 
 <!-- Manager Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('manager_id', 'Manager Id:') !!}
-    {!! Form::number('manager_id', null, ['class' => 'form-control']) !!}
+    {!! Form::label('manager_id', 'Manager:') !!}
+    {!! Form::select('manager_id', $employees, null, ['class' => 'form-control', 'placeholder' => 'Select Employee', 'required' => true]) !!}
 </div>
+
+

@@ -28,16 +28,16 @@
     {!! Form::text('physical_address', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
 </div>
 
-<!-- Department Field -->
+<!-- Department Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('department', 'Department:') !!}
-    {!! Form::number('department', null, ['class' => 'form-control']) !!}
+    {!! Form::label('department_id', 'Department:') !!}
+    {!! Form::select('department_id', $departments, null, ['class' => 'form-control', 'placeholder' => 'Select department', 'required']) !!}
 </div>
 
 <!-- Hire Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('hire_date', 'Hire Date:') !!}
-    {!! Form::text('hire_date', null, ['class' => 'form-control','id'=>'hire_date']) !!}
+    {!! Form::date('hire_date', null, ['class' => 'form-control','id'=>'hire_date']) !!}
 </div>
 
 @push('page_scripts')
