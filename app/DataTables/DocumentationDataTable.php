@@ -67,7 +67,6 @@ class DocumentationDataTable extends DataTable
     {
         return [
             'employee_id',
-            'resume',
             'document_type',
             'document_name',
             'file_path'

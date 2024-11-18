@@ -34,6 +34,6 @@ class Department extends Model
 
     public function leaves(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(\App\Models\Leaf::class, 'department_id');
+        return $this->hasMany(\App\Models\Leaf::class, 'department');
     }
 }

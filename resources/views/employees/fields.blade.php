@@ -30,8 +30,8 @@
 
 <!-- Department Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('department_id', 'Department:') !!}
-    {!! Form::select('department_id', $departments, null, ['class' => 'form-control', 'placeholder' => 'Select department', 'required']) !!}
+    {!! Form::label('department', 'Department:') !!}
+    {!! Form::select('department', $departments, null, ['class' => 'form-control', 'placeholder' => 'Select department', 'required']) !!}
 </div>
 
 <!-- Hire Date Field -->

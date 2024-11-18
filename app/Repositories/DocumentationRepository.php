@@ -9,7 +9,6 @@ class DocumentationRepository extends BaseRepository
 {
     protected $fieldSearchable = [
         'employee_id',
-        'resume',
         'document_type',
         'document_name',
         'file_path'

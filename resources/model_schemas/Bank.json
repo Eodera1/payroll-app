@@ -1,7 +1,7 @@
 [
     {
-        "name": "# id",
-        "dbType": "integer,false",
+        "name": "id",
+        "dbType": "integer,true",
         "htmlType": "number",
         "validations": "",
         "searchable": false,
@@ -49,9 +49,9 @@
     },
     {
         "name": "account_number",
-        "dbType": "integer,false",
-        "htmlType": "number",
-        "validations": "nullable|nullable",
+        "dbType": "string",
+        "htmlType": "text",
+        "validations": "nullable|string|max:100|nullable|string|max:100",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -106,6 +106,30 @@
         "inForm": true,
         "inIndex": true,
         "inView": true
+    },
+    {
+        "name": "updated_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "created_at",
+        "dbType": "datetime",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
     },
     {
         "type": "relation",

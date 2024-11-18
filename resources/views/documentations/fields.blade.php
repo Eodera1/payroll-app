@@ -4,12 +4,6 @@
     {!! Form::number('employee_id', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Resume Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('resume', 'Resume:') !!}
-    {!! Form::text('resume', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
-</div>
-
 <!-- Document Type Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('document_type', 'Document Type:') !!}
@@ -24,6 +18,6 @@
 
 <!-- File Path Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('file_path', 'File Path:') !!}
-    {!! Form::text('file_path', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
+    {!! Form::label('file_path', 'Choose a File:', ['class' => 'form-label'] ) !!}
+    {!! Form::file('file_path', ['class' => 'form-control', 'required' => true]) !!}
 </div>

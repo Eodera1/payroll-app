@@ -22,6 +22,7 @@ class Bank extends Model
     protected $casts = [
         'bank_name' => 'string',
         'branch_name' => 'string',
+        'account_number' => 'string',
         'account_name' => 'string',
         'account_type' => 'string',
         'bank_code' => 'string',
@@ -32,11 +33,13 @@ class Bank extends Model
         'employee_id' => 'nullable',
         'bank_name' => 'nullable|string|max:100',
         'branch_name' => 'nullable|string|max:100',
-        'account_number' => 'nullable',
+        'account_number' => 'nullable|string|max:100',
         'account_name' => 'nullable|string|max:100',
         'account_type' => 'nullable|string|max:100',
         'bank_code' => 'nullable|string|max:100',
-        'currency' => 'nullable|string|max:100'
+        'currency' => 'nullable|string|max:100',
+        'updated_at' => 'required',
+        'created_at' => 'required'
     ];
 
     public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo

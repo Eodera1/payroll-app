@@ -4,12 +4,6 @@
     <p>{{ $documentation->employee_id }}</p>
 </div>
 
-<!-- Resume Field -->
-<div class="col-sm-12">
-    {!! Form::label('resume', 'Resume:') !!}
-    <p>{{ $documentation->resume }}</p>
-</div>
-
 <!-- Document Type Field -->
 <div class="col-sm-12">
     {!! Form::label('document_type', 'Document Type:') !!}

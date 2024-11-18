@@ -18,13 +18,12 @@ class EmployeesDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        
+        // Adding a 'department' column with department name fallback
         $dataTable->addColumn('department', function (Employees $employees) {
-            return $employee->department->department_name ?? 'N/A'; // Display department name or 'N/A' if not available
-
+            return $employees->department->department_name ?? 'N/A';
         });
+
         return $dataTable;
-        
     }
 
     /**
@@ -35,7 +34,8 @@ class EmployeesDataTable extends DataTable
      */
     public function query(Employees $model)
     {
-        return $model->newQuery()->with(['department']);
+        // Load 'department' relationship to access department name in the dataTable
+        return $model->newQuery()->with('department');
     }
 
     /**
@@ -54,12 +54,12 @@ class EmployeesDataTable extends DataTable
                 'stateSave' => true,
                 'order'     => [[0, 'desc']],
                 'buttons'   => [
-                    // Enable Buttons as per your need
-//                    ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
-//                    ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
-//                    ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
-//                    ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
-//                    ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // Enable buttons as per your requirement
+                    // ['extend' => 'create', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'export', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'print', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'reset', 'className' => 'btn btn-default btn-sm no-corner',],
+                    // ['extend' => 'reload', 'className' => 'btn btn-default btn-sm no-corner',],
                 ],
             ]);
     }
@@ -77,7 +77,7 @@ class EmployeesDataTable extends DataTable
             'email',
             'phone_number',
             'physical_address',
-            'department',
+            'department' => ['data' => 'department', 'name' => 'department.department_name', 'title' => 'Department'],
             'hire_date',
             'salary',
             'disability_status',

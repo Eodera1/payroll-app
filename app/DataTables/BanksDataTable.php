@@ -18,7 +18,12 @@ class BanksDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'banks.datatables_actions');
+        $dataTable->addColumn('bank', function (Employees $employees) {
+            return $employees->bank->bank_name ?? 'N/A';
+
+        });
+
+        return $dataTable;
     }
 
     /**
@@ -29,7 +34,7 @@ class BanksDataTable extends DataTable
      */
     public function query(Banks $model)
     {
-        return $model->newQuery();
+        return $model->newQuery()->with('bank');
     }
 
     /**

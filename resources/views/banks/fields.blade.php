@@ -7,8 +7,8 @@
 <!-- Bank Name Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('bank_name', 'Bank Name:') !!}
-    {!! Form::text('bank_name', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
-</div>
+        {!! Form::text('bank_name', null, ['class' => 'form-control', 'placeholder' => 'Enter Bank Name', 'required' => true]) !!}
+</div
 
 <!-- Branch Name Field -->
 <div class="form-group col-sm-6">
@@ -19,7 +19,7 @@
 <!-- Account Number Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('account_number', 'Account Number:') !!}
-    {!! Form::number('account_number', null, ['class' => 'form-control']) !!}
+    {!! Form::text('account_number', null, ['class' => 'form-control', 'maxlength' => 100, 'maxlength' => 100]) !!}
 </div>
 
 <!-- Account Name Field -->

@@ -22,7 +22,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::resource('employees', App\Http\Controllers\EmployeesController::class);
-Route::resource('salaries', App\Http\Controllers\SalariesController::class); 
+Route::resource('salaries', App\Http\Controllers\SalariesController::class);
 Route::resource('departments', App\Http\Controllers\DepartmentController::class);
 Route::resource('banks', App\Http\Controllers\BankController::class);
 Route::resource('documentations', App\Http\Controllers\DocumentationController::class);

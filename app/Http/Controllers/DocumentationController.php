@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateDocumentationRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\DocumentationRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Flash;
 
 class DocumentationController extends AppBaseController
@@ -123,5 +124,19 @@ class DocumentationController extends AppBaseController
         Flash::success('Documentation deleted successfully.');
 
         return redirect(route('documentations.index'));
+    }
+    public function uploadFile(Request $request)
+    {
+        $request->validate([
+            'file_path' => 'required|file|mimes:jpg,png,pdf,docx|max:2048', // Adjust file types and size limit as needed
+        ]);
+
+        if ($request->hasFile('file_path')) {
+            $filePath = $request->file('file_path')->store('documents', 'public');
+
+            return back()->with('success', 'File uploaded successfully!')->with('filePath', $filePath);
+        }
+
+        return back()->withErrors('File upload failed.');
     }
 }

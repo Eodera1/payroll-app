@@ -14,7 +14,7 @@ class Employees extends Model
         'email',
         'phone_number',
         'physical_address',
-        'department',
+        'department_id',
         'hire_date',
         'salary',
         'disability_status',
@@ -32,7 +32,8 @@ class Employees extends Model
         'salary' => 'decimal:0',
         'disability_status' => 'string',
         'job_basis' => 'string',
-        'emergency_contact' => 'string'
+        'emergency_contact' => 'string',
+        'department_id' => 'integer',
     ];
 
     public static array $rules = [
@@ -51,7 +52,7 @@ class Employees extends Model
 
     public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\Department::class, 'department');
+        return $this->belongsTo(\App\Models\Department::class, 'department_id');
     }
 
     public function allowances(): \Illuminate\Database\Eloquent\Relations\HasMany

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('employee_id')->nullable()->index('fk_bank_details_employees');
             $table->string('bank_name', 100)->nullable();
             $table->string('branch_name', 100)->nullable();
-            $table->integer('account_number')->nullable();
+            $table->string('account_number')->nullable();
             $table->string('account_name', 100)->nullable();
             $table->string('account_type', 100)->nullable();
             $table->string('bank_code', 100)->nullable();
