@@ -38,12 +38,12 @@ class Bank extends Model
         'account_type' => 'nullable|string|max:100',
         'bank_code' => 'nullable|string|max:100',
         'currency' => 'nullable|string|max:100',
-        'updated_at' => 'required',
-        'created_at' => 'required'
+        //'updated_at' => 'required',
+        //'created_at' => 'required'
     ];
 
     public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(\App\Models\Employees::class, 'employee_id');
     }
 }

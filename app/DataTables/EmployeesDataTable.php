@@ -23,6 +23,8 @@ class EmployeesDataTable extends DataTable
             return $employees->department->department_name ?? 'N/A';
         });
 
+        $dataTable->addColumn('action', 'employees.datatables_actions');
+
         return $dataTable;
     }
 
@@ -77,7 +79,7 @@ class EmployeesDataTable extends DataTable
             'email',
             'phone_number',
             'physical_address',
-            'department' => ['data' => 'department', 'name' => 'department.department_name', 'title' => 'Department'],
+            'department',
             'hire_date',
             'salary',
             'disability_status',

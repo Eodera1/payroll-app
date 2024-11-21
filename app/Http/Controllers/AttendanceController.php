@@ -6,6 +6,7 @@ use App\DataTables\AttendanceDataTable;
 use App\Http\Requests\CreateAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Employees;
 use App\Repositories\AttendanceRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -34,7 +35,8 @@ class AttendanceController extends AppBaseController
      */
     public function create()
     {
-        return view('attendances.create');
+        $employees = Employees::pluck('first_name', 'id');
+        return view('attendances.create', compact('employees'));
     }
 
     /**

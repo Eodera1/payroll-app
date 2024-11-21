@@ -22,17 +22,17 @@ class Department extends Model
         'manager_id' => 'nullable'
     ];
 
-    public function manager(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function manager()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'manager_id');
+        return $this->belongsTo(Employees::class, 'manager_id');
     }
 
-    public function employee1s(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function employee1s()
     {
-        return $this->hasMany(\App\Models\Employee::class, 'department');
+        return $this->hasMany(Employees::class, 'department');
     }
 
-    public function leaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function leaves()
     {
         return $this->hasMany(\App\Models\Leaf::class, 'department');
     }

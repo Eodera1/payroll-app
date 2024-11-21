@@ -25,13 +25,13 @@ class Documentation extends Model
         'employee_id' => 'nullable',
         'document_type' => 'nullable|string|max:100',
         'document_name' => 'nullable|string|max:100',
-        'file_path' => 'nullable|string|max:16777215',
+        'file_path' => 'required|file|mimes:pdf,doc,docx|max:2048',
         //'updated_at' => 'required',
         //'created_at' => 'required'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(Employees::class, 'employee_id');
     }
 }

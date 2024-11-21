@@ -18,7 +18,13 @@ class BankDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'banks.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Bank $banks) {
+            return $banks->employee->full_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('action', 'banks.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +72,7 @@ class BankDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'bank_name',
             'branch_name',
             'account_number',

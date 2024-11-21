@@ -7,19 +7,19 @@
 <!-- Check In Time Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('check_in_time', 'Check In Time:') !!}
-    {!! Form::text('check_in_time', null, ['class' => 'form-control']) !!}
+    {!! Form::time('check_in_time', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Check Out Time Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('check_out_time', 'Check Out Time:') !!}
-    {!! Form::text('check_out_time', null, ['class' => 'form-control']) !!}
+    {!! Form::time('check_out_time', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('date', 'Date:') !!}
-    {!! Form::text('date', null, ['class' => 'form-control','id'=>'date']) !!}
+    {!! Form::date('date', null, ['class' => 'form-control','id'=>'date']) !!}
 </div>
 
 @push('page_scripts')

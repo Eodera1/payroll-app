@@ -18,7 +18,17 @@ class EmployeerecordDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'employeerecords.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Employeerecord $employeerecords) {
+            return $employeerecords->employee->full_name ?? 'N/A';
+        });
+
+       // $dataTable->addColumn('manager_full_name', function (Employeerecords $employeerecords) {
+            //return $employeerecords->manager->full_name ?? 'N/A';
+        //});
+
+        $dataTable->addColumn('action', 'employeerecords.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +76,7 @@ class EmployeerecordDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'record_type',
             'record_date',
             'record_description',

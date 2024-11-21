@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Salaries extends Model
 {
     public $table = 'salaries';
@@ -18,7 +18,8 @@ class Salaries extends Model
     ];
 
     protected $casts = [
-        'pay_date' => 'date'
+        'pay_date' => 'date',
+        'employee_id' => 'integer',
     ];
 
     public static array $rules = [
@@ -30,13 +31,17 @@ class Salaries extends Model
         'pay_date' => 'nullable'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(Employees::class, 'employee_id');
     }
 
-    public function payrolls(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function payrolls()
     {
-        return $this->hasMany(\App\Models\Payroll::class, 'salary_id');
+        return $this->hasMany(Payroll::class, 'salary_id');
+    }
+    public function getPayDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
     }
 }

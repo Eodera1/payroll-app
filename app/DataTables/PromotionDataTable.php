@@ -18,7 +18,14 @@ class PromotionDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'promotions.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Promotion $promotions) {
+            return $promotions->employee->full_name ?? 'N/A';
+        });
+
+
+        $dataTable->addColumn('action', 'promotions.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +73,7 @@ class PromotionDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'previous_position',
             'new_position',
             'promotion_date',

@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Department;
+use App\Models\Allowance;
+use Carbon\Carbon;
 
 class Employees extends Model
 {
@@ -50,63 +53,67 @@ class Employees extends Model
         'emergency_contact' => 'nullable|string|max:100'
     ];
 
-    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function department()
     {
-        return $this->belongsTo(\App\Models\Department::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
     }
 
-    public function allowances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function allowances()
     {
-        return $this->hasMany(\App\Models\Allowance::class, 'employee_id');
+        return $this->hasMany(Allowance::class, 'employee_id');
     }
 
-    public function attendances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function attendances()
     {
-        return $this->hasMany(\App\Models\Attendance::class, 'empolyee_id');
+        return $this->hasMany(Attendance::class, 'employee_id');
     }
 
-    public function bankDetails(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function bankDetails()
     {
-        return $this->hasMany(\App\Models\BankDetail::class, 'employee_id');
+        return $this->hasMany(BankDetail::class, 'employee_id');
     }
 
-    public function deductions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function deductions()
     {
-        return $this->hasMany(\App\Models\Deduction::class, 'employee_id');
+        return $this->hasMany(Deduction::class, 'employee_id');
     }
 
-    public function department1s(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function documentations()
     {
-        return $this->hasMany(\App\Models\Department::class, 'manager_id');
+        return $this->hasMany(Documentation::class, 'employee_id');
     }
 
-    public function documentations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function employeeRecords()
     {
-        return $this->hasMany(\App\Models\Documentation::class, 'employee_id');
+        return $this->hasMany(EmployeeRecord::class, 'employee_id');
     }
 
-    public function employeeRecords(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function leaves()
     {
-        return $this->hasMany(\App\Models\EmployeeRecord::class, 'employee_id');
+        return $this->hasMany(Leaf::class, 'employee_id');
     }
 
-    public function leaves(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function payrolls()
     {
-        return $this->hasMany(\App\Models\Leaf::class, 'employee_id');
+        return $this->hasMany(Payroll::class, 'employee_id');
     }
 
-    public function payrolls(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function promotions()
     {
-        return $this->hasMany(\App\Models\Payroll::class, 'employee_id');
+        return $this->hasMany(Promotion::class, 'employee_id');
     }
 
-    public function promotions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function salaries()
     {
-        return $this->hasMany(\App\Models\Promotion::class, 'employee_id');
+        return $this->hasMany(Salary::class, 'employee_id');
+    }
+    public function getHireDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
     }
 
-    public function salaries(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function getFullNameAttribute()
     {
-        return $this->hasMany(\App\Models\Salary::class, 'employee_id');
+        return trim($this->first_name . ' ' . $this->last_name );
     }
 }

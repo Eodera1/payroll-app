@@ -43,18 +43,43 @@ class DocumentationController extends AppBaseController
      */
     public function store(CreateDocumentationRequest $request)
     {
+        // Validate the incoming request
+        $request->validate([
+
+            'employee_id' => 'required|exists:employees,id',
+            'document_type' => 'required|string|max:100',
+            'document_name' => 'required|string|max:100',
+        ]);
+
+        // Get all the form input data
         $input = $request->all();
 
-        $documentation = $this->documentationRepository->create($input);
+        // Check if a file was uploaded
+        if ($request->hasFile('file_path')) {
+            // Define the storage folder
+            $folder = 'Documentations';
 
-        Flash::success('Documentation saved successfully.');
+            // Ensure the folder exists
+            $path = storage_path('app/public/' . $folder);
+            if (!file_exists($path)) {
+                mkdir($path, 0777, true);
+            }
+
+            // Store the file in the 'Documentations' folder under 'public' disk and get the path
+            $filePath = $request->file('file_path')->store($folder, 'public');
+
+            // Add the file path to the input array
+            $input['file_path'] = 'storage/' . $filePath;
+        }
+
+        // Save the form inputs along with the file path to the database
+        $documentations = $this->documentationRepository->create($input);
+
+        // Show success message and redirect to the index page
+        Flash::success('Documentations saved successfully.');
 
         return redirect(route('documentations.index'));
     }
-
-    /**
-     * Display the specified Documentation.
-     */
     public function show($id)
     {
         $documentation = $this->documentationRepository->find($id);
@@ -124,19 +149,5 @@ class DocumentationController extends AppBaseController
         Flash::success('Documentation deleted successfully.');
 
         return redirect(route('documentations.index'));
-    }
-    public function uploadFile(Request $request)
-    {
-        $request->validate([
-            'file_path' => 'required|file|mimes:jpg,png,pdf,docx|max:2048', // Adjust file types and size limit as needed
-        ]);
-
-        if ($request->hasFile('file_path')) {
-            $filePath = $request->file('file_path')->store('documents', 'public');
-
-            return back()->with('success', 'File uploaded successfully!')->with('filePath', $filePath);
-        }
-
-        return back()->withErrors('File upload failed.');
     }
 }

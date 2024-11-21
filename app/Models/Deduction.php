@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Deduction extends Model
 {
@@ -31,5 +32,9 @@ class Deduction extends Model
     public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+    }
+    public function getDateAppliedAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
     }
 }

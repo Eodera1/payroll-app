@@ -18,7 +18,13 @@ class DocumentationDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'documentations.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Documentation $documentations) {
+            return $documentations->employee->full_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('action', 'documentations.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +72,7 @@ class DocumentationDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'document_type',
             'document_name',
             'file_path'

@@ -18,7 +18,21 @@ class LeaveDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'leaves.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Leave $leaves) {
+            return $leaves->employee->full_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('leave_type_id', function (Leave $leaves) {
+            return $leaves->leaveType->leave_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('department_id', function (Leave $leaves) {
+            return $leaves->department->department_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('action', 'leaves.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +80,7 @@ class LeaveDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'leave_type_id',
             'department_id',
             'start_date',

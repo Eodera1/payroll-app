@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+
 
 class Leave extends Model
 {
@@ -34,18 +36,26 @@ class Leave extends Model
         'status' => 'nullable|string|max:1'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(Employees::class, 'employee_id');
     }
 
-    public function leaveType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function leaveType()
     {
-        return $this->belongsTo(\App\Models\Leavetype::class, 'leave_type_id');
+        return $this->belongsTo(Leavetype::class, 'leave_type_id');
     }
 
-    public function department(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function department()
     {
-        return $this->belongsTo(\App\Models\Department::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+    public function getStartDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+    public function getEndDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Attendance extends Model
 {
@@ -28,8 +29,13 @@ class Attendance extends Model
         // 'created_at' => 'required'
     ];
 
-    public function empolyee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'empolyee_id');
+        return $this->belongsTo(Employees::class, 'empolyee_id');
     }
+    public function getDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+
 }

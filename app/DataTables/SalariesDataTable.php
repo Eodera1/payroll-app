@@ -18,7 +18,13 @@ class SalariesDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'salaries.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Salaries $salaries) {
+            return $salaries->employee->full_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('action', 'salaries.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +72,7 @@ class SalariesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'employee_full_name',
             'basic_salary',
             'bonus',
             'deductions',

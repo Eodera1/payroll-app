@@ -19,7 +19,7 @@
 <!-- Start Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('start_date', 'Start Date:') !!}
-    {!! Form::text('start_date', null, ['class' => 'form-control','id'=>'start_date']) !!}
+    {!! Form::date('start_date', null, ['class' => 'form-control','id'=>'start_date']) !!}
 </div>
 
 @push('page_scripts')
@@ -31,7 +31,7 @@
 <!-- End Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('end_date', 'End Date:') !!}
-    {!! Form::text('end_date', null, ['class' => 'form-control','id'=>'end_date']) !!}
+    {!! Form::date('end_date', null, ['class' => 'form-control','id'=>'end_date']) !!}
 </div>
 
 @push('page_scripts')

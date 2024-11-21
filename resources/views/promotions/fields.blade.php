@@ -19,7 +19,7 @@
 <!-- Promotion Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('promotion_date', 'Promotion Date:') !!}
-    {!! Form::text('promotion_date', null, ['class' => 'form-control','id'=>'promotion_date']) !!}
+    {!! Form::date('promotion_date', null, ['class' => 'form-control','id'=>'promotion_date']) !!}
 </div>
 
 @push('page_scripts')
@@ -49,5 +49,5 @@
 <!-- Approved By Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('approved_by', 'Approved By:') !!}
-    {!! Form::number('approved_by', null, ['class' => 'form-control']) !!}
+    {!! Form::text('approved_by', null, ['class' => 'form-control']) !!}
 </div>

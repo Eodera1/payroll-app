@@ -6,6 +6,7 @@ use App\DataTables\DepartmentDataTable;
 use App\Http\Requests\CreateDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Employees;
 use App\Repositories\DepartmentRepository;
 use Illuminate\Http\Request;
 use App\Models\Employees as ModelsEmployees;
@@ -35,7 +36,7 @@ class DepartmentController extends AppBaseController
      */
     public function create()
     {
-        $employees = ModelsEmployees::pluck('first_name', 'id');
+        $employees = Employees::pluck('first_name', 'id');
         return view('departments.create', compact('employees'));
     }
 

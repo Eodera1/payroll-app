@@ -18,7 +18,14 @@ class DepartmentDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'departments.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Department $departments) {
+            return $departments->manager->full_name ?? 'N/A';
+
+        });
+
+        $dataTable->addColumn('action', 'departments.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -67,7 +74,7 @@ class DepartmentDataTable extends DataTable
     {
         return [
             'department_name',
-            'manager_id'
+            'employee_full_name'
         ];
     }
 

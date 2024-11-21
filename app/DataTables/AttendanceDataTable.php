@@ -18,7 +18,13 @@ class AttendanceDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'attendances.datatables_actions');
+        $dataTable->addColumn('employee_full_name', function (Attendance $attendances) {
+            return $attendances->employee->full_name ?? 'N/A';
+        });
+
+        $dataTable->addColumn('action', 'attendances.datatables_actions');
+
+        return $dataTable;
     }
 
     /**
@@ -66,7 +72,7 @@ class AttendanceDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'empolyee_id',
+            'employee_full_name',
             'check_in_time',
             'check_out_time',
             'date'

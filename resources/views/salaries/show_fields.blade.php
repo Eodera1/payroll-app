@@ -1,7 +1,7 @@
-<!-- Employee Id Field -->
+<!-- Employee d FieldI -->
 <div class="col-sm-12">
-    {!! Form::label('employee_id', 'Employee Id:') !!}
-    <p>{{ $salaries->employee_id }}</p>
+    {!! Form::label('first_name', 'First Name:') !!}
+    <p>{{ $employee->full_name }}</p>
 </div>
 
 <!-- Basic Salary Field -->

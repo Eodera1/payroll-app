@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Employeerecord extends Model
 {
@@ -37,8 +38,17 @@ class Employeerecord extends Model
         'handled_by' => 'nullable|string|max:100'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(Employees::class, 'employee_id');
     }
+    public function getRecordDateAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+
+   // public function manager()
+    //{
+       //return $this->belongsTo(Employees::class, 'manager_id');
+    //}
 }

@@ -35,13 +35,13 @@ class Payroll extends Model
         'pay_slip' => 'nullable|string|max:100'
     ];
 
-    public function employee(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function employee()
     {
-        return $this->belongsTo(\App\Models\Employee::class, 'employee_id');
+        return $this->belongsTo(Employees::class, 'employee_id');
     }
 
-    public function salary(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function salary()
     {
-        return $this->belongsTo(\App\Models\Salary::class, 'salary_id');
+        return $this->belongsTo(Salaries::class, 'salary_id');
     }
 }

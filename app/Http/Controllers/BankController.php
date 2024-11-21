@@ -6,6 +6,7 @@ use App\DataTables\BankDataTable;
 use App\Http\Requests\CreateBankRequest;
 use App\Http\Requests\UpdateBankRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Employees;
 use App\Repositories\BankRepository;
 use Illuminate\Http\Request;
 use Flash;
@@ -34,7 +35,8 @@ class BankController extends AppBaseController
      */
     public function create()
     {
-        return view('banks.create');
+        $employees = Employees::pluck('first_name', 'id');
+        return view('banks.create', compact('employees'));
     }
 
     /**

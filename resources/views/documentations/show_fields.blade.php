@@ -18,7 +18,11 @@
 
 <!-- File Path Field -->
 <div class="col-sm-12">
-    {!! Form::label('file_path', 'File Path:') !!}
-    <p>{{ $documentation->file_path }}</p>
+    {!! Form::label('file_path', 'File:') !!}
+    <p>
+        <a href="{{ asset($documentation->file_path) }}" target="_blank">
+            View Document
+        </a>
+    </p>
 </div>
 
