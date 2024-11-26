@@ -40,6 +40,7 @@ class HomeController extends Controller
             ->get()
             ->keyBy('department')
             ->map(fn($item) => $item->count);
+            
         return view('home', compact('totalEmployees', 'totalDepartments', 'totalAttendances', 'totalEmployeerecords', 'employeeCountsByDepartment'));
     }
 }

@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Employeerecord extends Model
 {
-    public $table = 'employeerecords';
+    public $table = 'employeerecords'; // changed this from employeerecords
 
     public $fillable = [
         'employee_id',

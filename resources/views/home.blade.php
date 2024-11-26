@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center">Welcome, {{ Auth::user()->name }}!</h1>
@@ -62,11 +62,11 @@
 
         <div class="col-md-3 mb-3">
             <div class="card text-white bg-warning">
-                <div class="card-header">
+                <div class="card-header text-white">
                     <h4>Records</h4>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">{{ $totalEmployeerecords }}</p>
+                    <p class="text-center text-white">{{ $totalEmployeerecords }}</p>
                     <div class="border-top">
                         <a href="{{ route('employees.index') }}" class="text-white">
                             View Records
@@ -78,8 +78,27 @@
     </div>
 
 
+     <!-- Add a new section for the chart -->
+     <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header bg-info rounded-top">
+                    <h4 class="text-center">Employees By Department</h4>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <canvas id="employeesPerDepartmentChart"></canvas>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
-        const ctx = document.getElementById('employeesPerDepartmentChart').getContext('2d');
+        const ctx = document.getElementById('employeesPerDepartmentChart');
         const employeesPerDepartmentChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -106,4 +125,5 @@
             }
         });
     </script>
+ 
 @endsection
