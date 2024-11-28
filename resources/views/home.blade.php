@@ -99,6 +99,7 @@
 
     <script>
         const ctx = document.getElementById('employeesPerDepartmentChart');
+        
         const employeesPerDepartmentChart = new Chart(ctx, {
             type: 'bar',
             data: {
