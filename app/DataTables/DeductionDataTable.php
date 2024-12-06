@@ -66,10 +66,9 @@ class DeductionDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'employee_id',
+            'deduction_name',
             'deduction_type',
-            'amount',
-            'date_applied'
+            'amount'
         ];
     }
 

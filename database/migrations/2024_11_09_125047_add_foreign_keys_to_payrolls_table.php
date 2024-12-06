@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('payrolls', function (Blueprint $table) {
-            $table->foreign(['employee_id'], 'fk_payrolls_employees')->references(['# id'])->on('employees')->onUpdate('no action')->onDelete('no action');
-            $table->foreign(['salary_id'], 'fk_payrolls_salaries')->references(['# id'])->on('salaries')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['employee_id'], 'fk_payrolls_employees')->references(['id'])->on('employees')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['salary_id'], 'fk_payrolls_salaries')->references(['id'])->on('salaries')->onUpdate('no action')->onDelete('no action');
         });
     }
 

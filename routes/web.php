@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeDeductionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::resource('promotions', App\Http\Controllers\PromotionController::class);
 Route::resource('leaves', App\Http\Controllers\LeaveController::class);
 Route::resource('leavetypes', App\Http\Controllers\LeavetypeController::class);
 Route::resource('deductions', App\Http\Controllers\DeductionController::class);
+Route::resource('employeedeductions', EmployeeDeductionController::class);

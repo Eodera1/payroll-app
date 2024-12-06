@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('leaves', function (Blueprint $table) {
-            $table->foreign(['department_id'], 'fk_leaves_departments')->references(['# id'])->on('departments')->onUpdate('no action')->onDelete('no action');
-            $table->foreign(['employee_id'], 'fk_leaves_employees')->references(['# id'])->on('employees')->onUpdate('no action')->onDelete('no action');
-            $table->foreign(['leave_type_id'], 'fk_leaves_leaves')->references(['# id'])->on('leave_types')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['department_id'], 'fk_leaves_departments')->references(['id'])->on('departments')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['employee_id'], 'fk_leaves_employees')->references(['id'])->on('employees')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['leave_type_id'], 'fk_leaves_leaves')->references(['id'])->on('leavetypes')->onUpdate('no action')->onDelete('no action');
         });
     }
 

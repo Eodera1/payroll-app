@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('salaries', function (Blueprint $table) {
-            $table->foreign(['employee_id'], 'fk_salaries_employees')->references(['# id'])->on('employees')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['employee_id'], 'fk_salaries_employees')->references(['id'])->on('employees')->onUpdate('no action')->onDelete('no action');
         });
     }
 
